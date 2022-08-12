@@ -26,8 +26,8 @@ function Login() {
 
   return (
     <main className=''>
-        <section className='h-[700px] w-[1200px] flex'>
-            <div className='border rounded-l-lg w-[550px] h-full items-center flex flex-col'>
+        <section className='w-screen h-screen flex justify-center items-center'>
+            <div className='border rounded-l-lg w-[550px] h-[700px] items-center flex flex-col'>
                 <div className='py-[50px]'>
                     <img className='w-[200px]' src={img2} alt="" />
                 </div>
@@ -48,19 +48,19 @@ function Login() {
                             placeholder='Digite a sua senha'
                             handleOnChange={handleChange}
                         />
-                    </form>
-                    <div className='flex justify-between text-sm'>
-                        <div className='pb-5 flex items-center'>
-                            <input type="radio" id='radio'/>
-                            <label className='pl-1' htmlFor="radio">Lembrar acesso</label>
+                        <div className='flex justify-between text-sm'>
+                            <div className='pb-5 flex items-center'>
+                                <input type="radio" id='radio'/>
+                                <label className='pl-1' htmlFor="radio">Lembrar acesso</label>
+                            </div>
+                            <Link className='hover:text-[#009CC2] transition ease-out duration-400' to='/register'>Esqueceu a senha ?</Link>
                         </div>
-                        <Link className='hover:text-[#009CC2] transition ease-out duration-400' to='/register'>Esqueceu a senha ?</Link>
-                    </div>
-                    <input className='rounded-lg font-bold text-white py-3 w-[100%] bg-[#009CC2] hover:bg-[#00556b] transition ease-out duration-400 cursor-pointer' type="submit" value='Log in' />
+                        <input className='rounded-lg font-bold text-white py-3 w-[100%] bg-[#009CC2] hover:bg-[#00556b] transition ease-out duration-400 cursor-pointer' type="submit" value='Log in' />
+                    </form>
                 </div>
             </div>
             <div className='w-[650px] rounded-r-lg'>
-                <img className='w-[650px] h-full rounded-r-lg' src={img} alt="" />
+                <img className='w-[650px] h-[700px] rounded-r-lg' src={img} alt="" />
             </div>
         </section>
     </main>

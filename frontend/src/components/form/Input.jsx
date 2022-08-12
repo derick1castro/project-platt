@@ -11,7 +11,7 @@ function Input({
             <label className="mb-2 font-bold text-sm text-[#68787b]" htmlFor={name}>{text}:</label>
             <input 
             className="p-3 border rounded"
-            type={text}
+            type={type}
             name={name}
             id={name}
             placeholder={placeholder} //deixar com um tom mais claro

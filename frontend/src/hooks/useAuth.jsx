@@ -20,11 +20,11 @@ export default function useAuth() {
 
     async function register(user) {
 
-        let msgText = 'Login realizado com sucesso'
+        let msgText = 'Cadastro realizado com sucesso'
         let msgType = 'success'
 
         try {
-            const data = await api.post('users/register', user).then((response) => {
+            const data = await api.post('/users/register', user).then((response) => {
                 return response.data
             })
 
@@ -40,12 +40,13 @@ export default function useAuth() {
     }
 
     async function login(user) {
+
         let msgText = 'Login realizado com sucesso'
         let msgType = 'seccess'
 
         try {
 
-            const data = await api.post('users/login', user).then((response) => {
+            const data = await api.post('/users/login', user).then((response) => {
                 return response.data
             })
 
@@ -75,7 +76,7 @@ export default function useAuth() {
         setAuthenticated(false)
         localStorage.removeItem('token')
         api.defaults.headers.Authorization = undefined
-        navigate('/')
+        navigate('/login')
 
         setFlashMessage(msgText, msgType)
     }
