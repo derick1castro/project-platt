@@ -2,6 +2,7 @@ import Input from '../../form/Input'
 import React from 'react'
 import Navbar from '../../layout/Navbar'
 import Container from '../../../components/layout/Container'
+import Message from '../../layout/Message'
 
 import {useState, useContext} from 'react'
 
@@ -26,6 +27,7 @@ const Register = () => {
   return (
     <>
         <Navbar />
+        <Message />
         <Container>
             <section className='max-w-[350px] mx-auto'>
                 <h1 className='text-[#009CC2] text-3xl font-bold my-10'>Convite</h1>
