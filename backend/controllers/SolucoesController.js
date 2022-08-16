@@ -121,4 +121,116 @@ module.exports = class SolucoesController {
             solucoes: solucoes,
         })
     }
+
+    static async removeSolucoesById(req, res) {
+        const id = req.params.id
+
+        // check if ID is  valid
+        if (!ObjectId.isValid(id)) {
+            res.status(422).json({ message: 'ID inválido!'})
+            return
+        }
+
+        // check if solucoes exists
+        const solucoes = await Solucoes.findOne({ _id: id })
+
+        if (!solucoes) {
+            res.status(404).json({ message: 'Solução não encontrada!' })
+            return
+        }
+
+        await Solucoes.findByIdAndRemove(id)
+
+        res.status(200).json({ message: 'Solução removida com sucesso!' })
+    }
+
+    static async UpdateSolucao(req, res) {
+        const id = req.params.id
+
+        const { titulo, descricao, indtech, caracteristicas, dores, depoimentos, autorDepoimento, linkCase} = req.body
+
+        const images = req.files
+
+        const updatedData = {}
+
+        // check id solucao exists
+        const solucoes = await Solucoes.findOne({ _id: id })
+
+        if (!solucoes) {
+            res.status(404).json({ message: 'Solução não encontrada!' })
+            return
+        }
+
+        //validations
+        if(!titulo) {
+            res.status(422).json({ message: 'O título é obrigatório!'})
+            return
+        } else {
+            updatedData.titulo = titulo
+        }
+
+        if(!descricao) {
+            res.status(422).json({ message: 'A descrição é obrigatória!'})
+            return
+        } else {
+            updatedData.descricao = descricao
+        }
+
+        if(!indtech) {
+            res.status(422).json({ message: 'A indtech é obrigatória!'})
+            return
+        } else {
+            updatedData.indtech = indtech
+        }
+
+        if(!caracteristicas) {
+            res.status(422).json({ message: 'As características são obrigatórias!'})
+            return
+        } else {
+            updatedData.caracteristicas = caracteristicas
+        }
+
+        if(!dores) {
+            res.status(422).json({ message: 'As dores são obrigatórias!'})
+            return
+        } else {
+            updatedData.dores = dores
+        }
+
+        if(!depoimentos) {
+            res.status(422).json({ message: 'Os depoimentos são obrigatórios!'})
+            return
+        } else {
+            updatedData.depoimentos = depoimentos
+        }
+
+        if(!autorDepoimento) {
+            res.status(422).json({ message: 'O autor do depoimento é obrigatório!'})
+            return
+        } else {
+            updatedData.autorDepoimento = autorDepoimento
+        }
+
+        if(!linkCase) {
+            res.status(422).json({ message: 'O link do case é obrigatório!'})
+            return
+        } else {
+            updatedData.linkCase = linkCase
+        }
+        
+        if(images.length === 0) {
+            res.status(422).json({ message: 'A imagem é obrigatória!'})
+            return
+        } else {
+            updatedData.images = []
+            images.map((image) => {
+                updatedData.images.push(image.filename)
+            })
+        }
+
+        await Solucoes.findByIdAndUpdate(id, updatedData)
+
+        res.status(200).json({ message: 'Solução atualizada com sucesso!' })
+
+    }
 }
