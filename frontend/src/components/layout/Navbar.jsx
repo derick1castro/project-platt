@@ -25,7 +25,7 @@ function Navbar() {
           <Link to='/empresas'>Empresas</Link>
         </li>
         <li className='cursor-pointer font-medium py-2 px-3 text-[#68787b] hover:text-[#009CC2] transition ease-in-out duration-300'>
-          <Link to='/solucoes'>Soluções</Link>
+          <Link to='/solucoes/minhassolucoes'>Soluções</Link>
         </li>
         <li onClick={logout}>Logout</li>
       </ul>

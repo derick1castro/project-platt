@@ -10,6 +10,8 @@ import {UserProvider} from './context/UserContext'
 import Login from "./components/pages/Auth/Login";
 import Register from './components/pages/Auth/Register';
 import Home from './components/pages/Home';
+import MinhasSolucoes from './components/pages/Solucoes/MinhasSolucoes'
+import AddSolucao from './components/pages/Solucoes/AddSolucao';
 
 
 function App() {
@@ -17,11 +19,12 @@ function App() {
     <div>
       <Router>
         <UserProvider>
-          
           <Routes>
             <Route path='/' element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/register' element={<Register />} />
+            <Route path='/solucoes/minhassolucoes' element={<MinhasSolucoes />} />
+            <Route path='/solucoes/add' element={<AddSolucao />} />
           </Routes>
           
         </UserProvider>  

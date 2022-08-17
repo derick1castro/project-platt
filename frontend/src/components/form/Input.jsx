@@ -17,6 +17,7 @@ function Input({
             placeholder={placeholder} //deixar com um tom mais claro
             onChange={handleOnChange}
             value={value}
+            multiple={true}
             />
         </div>
     )
