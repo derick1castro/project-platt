@@ -1,7 +1,6 @@
 ![catalogo-platt](https://user-images.githubusercontent.com/104864411/185402388-2622daf9-3362-4ccd-8cf1-399bdbdd601f.png)
-# project-platt
 
-<h1>Fullstack React.JS Website with Node.JS + MongoDB Styled With Tailwind CSS</h1>
+<h1>FullStack MERN Project</h1>
 
 Run npm install to install all the necessary dependencies
 
