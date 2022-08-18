@@ -4,4 +4,10 @@
 
 Run npm install to install all the necessary dependencies
 
-Um projeto profissional completo as tecnologias MERN (mongoDB + express + reactJs + nodeJs), foi utilzado o framework css tailwind para agilizar o processo e facilitar a responsividade  
+<h2>Projeto desenvolvido com a stack Mongo, Express, React.JS, Node.JS - (MERN) e estilizado com o framework tailwind.CSS</h2>
+
+Funcionalidades do projeto:
+--> CRUD de um cadastro de clientes enviando seu acesso da plataforma por email, edição, exclusão e envio de email de convites via email;
+--> CRUD de um cadastro de soluções técnicas, edição, exclusão e edição;
+--> Filtro das soluções técnicnas;
+--> Authenticação utilizando JWT.
