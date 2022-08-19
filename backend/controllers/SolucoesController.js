@@ -1,8 +1,8 @@
 const Solucoes = require('../models/Solucoes')
 
 //helpers
-// const getUserByToken = require('../helpers/get-user-by-token')
-// const getToken = require('../helpers/get-token')
+const getUserByToken = require('../helpers/get-user-by-token')
+const getToken = require('../helpers/get-token')
 const ObjectId = require('mongoose').Types.ObjectId
 
 module.exports = class SolucoesController {
@@ -61,7 +61,12 @@ module.exports = class SolucoesController {
             return
         }
 
+        // get user
+        const token = getToken(req)
+        const user = getUserByToken(token)
+
         // create solution
+        
         const solucoes = new Solucoes({
             titulo,
             descricao,
@@ -72,19 +77,24 @@ module.exports = class SolucoesController {
             autorDepoimento,
             linkCase,
             images: [],
+            user: {
+                _id: user._id,
+                name: user.name,
+                image: user.image,
+                phone: user.phone
+            }
         })
 
         images.map((image) => {
             solucoes.images.push(image.filename)
         })
         
-
         try {
             
-            const NewSolucoes = await solucoes.save()
+            const newSolucoes = await solucoes.save()
             res.status(201).json({
                 message: 'Solução cadastrada com sucesso!',
-                NewSolucoes
+                newSolucoes: newSolucoes,
             })
 
         } catch (error) {
@@ -102,6 +112,14 @@ module.exports = class SolucoesController {
         })
     }
 
+    static async getAllSolucoes (req, res) {
+        const solucoes = await Solucoes.find().sort('-createdAt')
+
+        res.status(200).json({
+            solucoes,
+        })
+    }
+ 
     static async getSoulucoesById(req, res) {
 
         const id = req.params.id
@@ -125,7 +143,7 @@ module.exports = class SolucoesController {
     static async removeSolucoesById(req, res) {
         const id = req.params.id
 
-        // check if ID is  valid
+        // check if ID is valid
         if (!ObjectId.isValid(id)) {
             res.status(422).json({ message: 'ID inválido!'})
             return
