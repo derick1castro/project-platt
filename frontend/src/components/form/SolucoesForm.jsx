@@ -24,9 +24,9 @@ const SolucoesForm = ({handleSubmit, solucoesData, btnText}) => {
 
   return (
     <>
-        <section className='max-w-[350px] mx-auto'>
+        <section className='max-w-[80%] mx-auto text-[#009cc2] space-y-8'>
             <h1 className='text-3xl font-bold'>Nova Solução</h1>
-            <form onSubmit={submit}>
+            <form className='space-y-7' onSubmit={submit}>
                 <p className='text-xl font-bold'>Resumo</p>
                 <Input 
                     text='Título da Solução'
@@ -73,7 +73,7 @@ const SolucoesForm = ({handleSubmit, solucoesData, btnText}) => {
                     value={solucoes.dores || ''}
                 />
 
-                <p className='text-xl font-bold'>Case</p>
+                <p className='pt-8 text-xl font-bold'>Case</p>
 
                 <Input 
                     text='Depoimentos'
@@ -102,9 +102,9 @@ const SolucoesForm = ({handleSubmit, solucoesData, btnText}) => {
                     value={solucoes.linkCase || ''}
                 /> 
 
-                <p className='text-xl font-bold'>Clientes</p>
-
-                <div className='flex justify-center mb-4 space-x-4 mt-4'>
+                <div>
+                    <p className='flex text-xl font-bold'>Clientes</p>
+                    <div className='flex justify-center mb-4 space-x-4 mt-4'>
                     {preview.length > 0
                         ? preview.map((image, index) => (
                             <img className='w-[200px] h-[200px]' src={URL.createObjectURL(image)} alt={solucoes.name} key={`${solucoes.name} + ${index}`} />
@@ -115,6 +115,8 @@ const SolucoesForm = ({handleSubmit, solucoesData, btnText}) => {
                         ))}
                 </div>
                 
+             </div>
+               
                 <Input 
                     text='Imagens dos clientes'
                     type='file'

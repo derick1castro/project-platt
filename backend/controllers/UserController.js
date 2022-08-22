@@ -128,6 +128,14 @@ module. exports = class UserController {
         res.status(200).send(currentUser)
     }
 
+    static async getAllUsers(req, res) {
+        const user = await User.find().sort('-createdAt')
+
+        res.status(200).json({
+            user,
+        })
+    }
+
     static async getUserById(req, res) {
 
         const id = req.params.id

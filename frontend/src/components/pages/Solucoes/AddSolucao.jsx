@@ -60,12 +60,9 @@ const navigate = useNavigate()
     <>
         <Navbar />
         <Message />
-        <section className='text-center mb-5'>
-        <div>
-            <h1 className='mb-1'>Cadastre uma Solução</h1>
-        </div>
-        <SolucoesForm handleSubmit={registerSolucoes} btnText='Cadastrar Solução'/>
-    </section>
+        <section className='mt-[80px]'>
+            <SolucoesForm handleSubmit={registerSolucoes} btnText='Cadastrar Solução'/>
+        </section>
     </>
 
   )

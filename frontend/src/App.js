@@ -12,6 +12,7 @@ import Register from './components/pages/Auth/Register';
 import Home from './components/pages/Home';
 import MinhasSolucoes from './components/pages/Solucoes/MinhasSolucoes'
 import AddSolucao from './components/pages/Solucoes/AddSolucao';
+import User from './components/pages/User/User';
 
 
 function App() {
@@ -25,8 +26,8 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/solucoes/minhassolucoes' element={<MinhasSolucoes />} />
             <Route path='/solucoes/add' element={<AddSolucao />} />
+            <Route path='/usuarios' element={<User />} />
           </Routes>
-          
         </UserProvider>  
       </Router>
     </div>
