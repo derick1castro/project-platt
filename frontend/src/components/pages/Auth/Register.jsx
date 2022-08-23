@@ -60,20 +60,6 @@ const Register = () => {
                     placeholder="Ex: 3333-3333"
                     handleOnChange={handleChange}
                     />
-                    {/* <Input
-                    text="cargo"
-                    type="text"
-                    name="cargo"
-                    placeholder="Ex: Estagiário de Tecnologia"
-                    handleOnChange={handleChange}
-                    /> */}
-                    {/* <Input
-                    text="Empresa"
-                    type="text"
-                    name="empresa"
-                    placeholder="Ex: Timenow"
-                    handleOnChange={handleChange}
-                    /> */}
                     <Input
                     text="Senha"
                     type="password"

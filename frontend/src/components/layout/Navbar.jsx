@@ -27,7 +27,7 @@ function Navbar() {
         <li className='cursor-pointer font-medium py-2 px-3 text-[#68787b] hover:text-[#009CC2] transition ease-in-out duration-300'>
           <Link to='/solucoes/minhassolucoes'>Soluções</Link>
         </li>
-        <li onClick={logout}>Logout</li>
+        <li className='cursor-pointer font-medium py-2 px-3 text-[#68787b] hover:text-[#009CC2] transition ease-in-out duration-300' onClick={logout}>Logout</li>
       </ul>
       ) : ('')}
       

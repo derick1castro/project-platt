@@ -9,6 +9,7 @@ const User = () => {
     const [users, setUsers] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
     const {setFlashMessage} = useFlashMessage
+    
 
     useEffect(() => {
         api.get('/users/usuarios', {
@@ -17,23 +18,32 @@ const User = () => {
             }
         })
         .then((response) => {
-            setUsers(response.data.users)
+            setUsers(response.data.user)
         })
     }, [token])
 
   return (
     <>
-    {/* <Navbar />
-    console.log(user)
-    {users > 0 && users.map((user) => (
-        <div key={user._id}>                            
-            <span> {user.name}</span>
-            <span> {user.email}</span>                                                            
-        </div>
-     ))
-    }
-    {users === 0 && <p>Não há usuários cadastradas</p>}
-                         */}
+        <Navbar />
+        <section className='h-[91vh]'>
+            {users.length > 0 && users.map((user) => (
+            <div key={user._id}>                            
+                <span> {user.name}</span>
+                <span> {user.email}</span>                                                            
+            </div>
+            ))}
+            {users.length === 0 &&
+            <div className='flex flex-col items-center justify-center h-full space-y-2'>
+                <p>Ainda não há usuários cadastrados no sistema</p>
+                <p>Deseja convidar novos usuários?</p>
+                <div>
+                     <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md">
+                    <Link to="/register">Convidar usuários</Link>
+                    </button>
+                </div>
+            </div>
+            }              
+        </section>    
     </>
   )
 }
