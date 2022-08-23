@@ -30,8 +30,8 @@ const MinhasSolucoes = () => {
         <Navbar />
         <section>
             <div className="flex justify-end bg-[#001c23]">
-                <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md">
-                    <Link to="/solucoes/add">Nova Solução</Link>
+                <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[20px] px-8 rounded-md text-md">
+                    <Link to="/solucoes/add">Nova solução</Link>
                 </button>
             </div>
                  <div className="flex w-[95%] ml-[100px] space-x-20 mt-[70px]">

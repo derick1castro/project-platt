@@ -26,9 +26,8 @@ const Register = () => {
 
   return (
     <>
-        <Navbar />
-        <Message />
         <Container>
+        <Message />
             <section className='max-w-[350px] mx-auto'>
                 <h1 className='text-[#009CC2] text-3xl font-bold my-10'>Convite</h1>
                 <form onSubmit={handleSubmit}>
@@ -43,13 +42,6 @@ const Register = () => {
                     text="E-mail"
                     type="text"
                     name="email"
-                    placeholder="Ex: derick.domingos@timenow.com.br"
-                    handleOnChange={handleChange}
-                    />
-                    <Input
-                    text="Confirmação de e-mail"
-                    type="text"
-                    name="confirmemail"
                     placeholder="Ex: derick.domingos@timenow.com.br"
                     handleOnChange={handleChange}
                     />
