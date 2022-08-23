@@ -13,6 +13,7 @@ import Home from './components/pages/Home';
 import MinhasSolucoes from './components/pages/Solucoes/MinhasSolucoes'
 import AddSolucao from './components/pages/Solucoes/AddSolucao';
 import User from './components/pages/User/User';
+import EditSolucao from './components/pages/Solucoes/EditSolucao';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/solucoes/minhassolucoes' element={<MinhasSolucoes />} />
             <Route path='/solucoes/add' element={<AddSolucao />} />
+            <Route path='/solucoes/edit/:id' element={<EditSolucao />} />
             <Route path='/usuarios' element={<User />} />
           </Routes>
         </UserProvider>  

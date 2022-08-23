@@ -8,7 +8,7 @@ import Navbar from '../../layout/Navbar'
 import api from '../../../utils/api'
 
 // hooks
-import {useState} from 'react'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useFlashMessage from '../../../hooks/useFlashMessage'
 

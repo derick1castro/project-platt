@@ -25,6 +25,26 @@ const MinhasSolucoes = () => {
         })
     }, [token])
 
+    async function removeSolucao(id) {
+        let msgType = 'success'
+
+        const data = await api.delete(`/solucoes/${id}`, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(token)}`
+            }
+        }).then((response) => {
+            const updatedSolucoes = solucoes.filter((solucao) => solucao._id != id)
+            setSolucoes(updatedSolucoes)
+            return response.data
+        }).catch((err) => {
+
+            msgType = 'error'
+            return err.response.data
+        })
+
+        setFlashMessage(data.message, msgType)
+    }
+
   return (
     <>
         <Navbar />
@@ -55,8 +75,10 @@ const MinhasSolucoes = () => {
                                         
                                     </div>
                                     <div>
-                                        <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded-md mr-6">Excluir</button>
-                                        <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded-md mr-6">Editar</button>
+                                        <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded-md mr-6" onClick={() => {
+                                            removeSolucao(solucao._id)
+                                        }}>Excluir</button>
+                                        <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded-md mr-6"><Link to={`/solucoes/edit/${solucoes._id}`}>Editar</Link></button>
                                     </div>
                                     
                                 </div>
