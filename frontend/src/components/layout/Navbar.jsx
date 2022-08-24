@@ -12,7 +12,7 @@ function Navbar() {
   const {authenticated, logout } = useContext(Context)
 
   return (
-    <nav className='flex justify-between py-4 px-6'>
+    <nav className='flex justify-between py-4 px-6 border-b-2'>
       <div className='flex items-center'>
         <Link to='/'><img className='w-[200px] mr-3' src={Logo} alt="Logo Platt" /></Link>
       </div>

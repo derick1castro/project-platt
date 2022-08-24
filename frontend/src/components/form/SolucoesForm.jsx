@@ -107,11 +107,11 @@ const SolucoesForm = ({handleSubmit, solucoesData, btnText}) => {
                     <div className='flex justify-center mb-4 space-x-4 mt-4'>
                     {preview.length > 0
                         ? preview.map((image, index) => (
-                            <img className='w-[200px] h-[200px]' src={URL.createObjectURL(image)} alt={solucoes.name} key={`${solucoes.name} + ${index}`} />
+                            <img className='w-[200px] h-[200px]' src={URL.createObjectURL(image)} alt={solucoes.titulo} key={`${solucoes.titulo} + ${index}`} />
                         )) :
                         solucoes.images && 
                         solucoes.images.map((image, index) => (
-                            <img src={`${process.env.REACT_APP_API}/images/solucoes/${image}`} alt={solucoes.name} key={`${solucoes.name} + ${index}`} />
+                            <img src={`${process.env.REACT_APP_API}/images/solucoes/${image}`} alt={solucoes.titulo} key={`${solucoes.titulo} + ${index}`} />
                         ))}
                 </div>
                 

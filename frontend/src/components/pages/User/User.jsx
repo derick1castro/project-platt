@@ -56,17 +56,16 @@ const User = () => {
                 <div className='flex'>
                     <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-3">Excluir</button>
                     <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-6">Editar</button>
-                </div>
-                                                                            
+                </div>    
             </div>
             ))}
             {users.length === 0 &&
             <div className='flex flex-col items-center justify-center h-full space-y-2'>
-                <p>Ainda não há usuários cadastrados no sistema</p>
+                <p>Ainda não há usuários cadastrados no sistema.</p>
                 <p>Deseja convidar novos usuários?</p>
                 <div>
-                     <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md">
-                    <Link to="/register">Convidar usuários</Link>
+                    <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md">
+                        <Link to="/register">Convidar usuários</Link>
                     </button>
                 </div>
             </div>

@@ -9,7 +9,7 @@ import api from '../../../utils/api'
 
 // hooks
 import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import useFlashMessage from '../../../hooks/useFlashMessage'
 
 // componets
@@ -61,7 +61,7 @@ const navigate = useNavigate()
         <Navbar />
         <Message />
         <section className='mt-[80px]'>
-            <SolucoesForm handleSubmit={registerSolucoes} btnText='Cadastrar Solução'/>
+            <SolucoesForm handleSubmit={registerSolucoes} btnText='Cadastrar Solução' />
         </section>
     </>
 
