@@ -1,24 +1,57 @@
 import Input from '../../form/Input'
-import React from 'react'
 import Container from '../../../components/layout/Container'
 import Message from '../../layout/Message'
 
-import {useState, useContext} from 'react'
+import React, {useState, useEffect} from 'react'
+import api from '../../../utils/api'
 
-//contexts
-import {Context} from '../../../context/UserContext'
+import useFlashMessage from '../../../hooks/useFlashMessage'
 
-const Register = () => {
+
+const EditUser = () => {
     const [user, setUser] = useState({})
-    const {register} = useContext(Context)
+    const [token] = useState(localStorage.getItem('token') || '' )
+    const { setFlashMessage } = useFlashMessage()
 
+    
+    useEffect(() => {
+        api.get('/users/checkuser', {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(token)}`
+            }
+        })
+        .then((response) => {
+            setUser(response.data)
+        })
+    }, [token])
+    
     function handleChange(e) {
-        setUser({...user, [e.target.name]: e.target.value})
+        setUser({ ...user, [e.target.name]: e.target.value})
     }
 
-    function handleSubmit(e) {
+    async function handleSubmit(e) {
         e.preventDefault()
-        register(user) 
+
+        let msgType = 'success'
+
+        const formData = new FormData()
+
+        // await Object.keys(user).forEach((key) => formData.append(key, user[key]))
+
+        const data = await api.patch(`/users/edit/${user._id}`, formData, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(token)}`,
+                // 'Content-type': 'multipart/form-data'
+            }
+        }).then((response) => {
+            setUser(response.data.user)
+            // return response.data
+        }).catch((err) => {
+            msgType = 'error'
+            return err.response.data
+        })
+
+        setFlashMessage(data.message, msgType)
     }
 
   return (
@@ -26,7 +59,7 @@ const Register = () => {
         <Container>
         <Message />
             <section className='max-w-[350px] mx-auto'>
-                <h1 className='text-[#009CC2] text-3xl font-bold my-10'>Convidar Usuário</h1>
+                <h1 className='text-[#009CC2] text-3xl font-bold my-10'>Editar Usuário</h1>
                 <form onSubmit={handleSubmit}>
                     <Input
                     text="Nome Completo"
@@ -34,6 +67,7 @@ const Register = () => {
                     name="name"
                     placeholder="Ex: Derick Castro Domingos"
                     handleOnChange={handleChange}
+                    value={user.name || '' }                  
                     />
                     <Input
                     text="E-mail"
@@ -41,6 +75,7 @@ const Register = () => {
                     name="email"
                     placeholder="Ex: derick.domingos@timenow.com.br"
                     handleOnChange={handleChange}
+                    value={user.email || '' }                   
                     />
                     <Input
                     text="Digite o telefone"
@@ -48,6 +83,7 @@ const Register = () => {
                     name="phone"
                     placeholder="Ex: 3333-3333"
                     handleOnChange={handleChange}
+                    value={user.phone || '' }                   
                     />
                     <Input
                     text="Senha"
@@ -63,7 +99,7 @@ const Register = () => {
                     placeholder="Confirme a senha"
                     handleOnChange={handleChange}
                     />
-                    <button className='bg-[#009CC2] p-3 text-white px-5 rounded mt-4' type='submit'>Cadastrar usuário</button>
+                    <button className='bg-[#009CC2] p-3 text-white px-5 rounded mt-4' type='submit'>Salvar Alterações</button>
                 </form>
             </section>
         </Container>
@@ -71,4 +107,4 @@ const Register = () => {
   )
 }
 
-export default Register
+export default EditUser

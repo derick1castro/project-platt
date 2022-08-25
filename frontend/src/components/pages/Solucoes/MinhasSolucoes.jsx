@@ -11,6 +11,7 @@ const MinhasSolucoes = () => {
     const [solucoes, setSolucoes] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
     const {setFlashMessage} = useFlashMessage
+    
 
     useEffect(() => {
         api.get('/solucoes/minhassolucoes', {

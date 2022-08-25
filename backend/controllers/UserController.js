@@ -2,8 +2,9 @@ const User = require('../models/User')
 
 const bcrypt = require('bcrypt')
 const jwt = require('jsonwebtoken')
+const ObjectId = require('mongoose').Types.ObjectId
 
-//helperrs
+//helpers
 const createUserToken = require("../helpers/create-user-token")
 const getToken = require('../helpers/get-token')
 const getUserbyToken = require('../helpers/get-user-by-token')
@@ -111,16 +112,16 @@ module. exports = class UserController {
     static async checkUser(req, res) {
 
         let currentUser
+        console.log(req.headers.authorization)
 
-        if (req.headers.authorization) {
-        
+        if(req.headers.authorization) {
+
             const token = getToken(req)
             const decoded = jwt.verify(token, 'nossosecret')
 
             currentUser = await User.findById(decoded.id)
 
             currentUser.password = undefined
-
         } else {
             currentUser = null
         }
@@ -150,6 +151,28 @@ module. exports = class UserController {
         }
 
         res.status(200).json({ user })
+    }
+
+    static async removeUserById(req, res) {
+        const id = req.params.id
+
+        // check if ID is valid
+        if (!ObjectId.isValid(id)) {
+            res.status(422).json({ message: 'ID inválido'})
+            return
+        }
+
+        // check if user exists
+        const user = await User.findOne({ _id: id })
+
+        if(!user) {
+            res.status(409).json({ message: 'Usuário não encontrado! '})
+            return
+        }
+
+        await User.findByIdAndRemove(id)
+
+        res.status(200).json({ message: 'Usuário removido com sucesso!' })
     }
 
     static async editUser(req, res) {

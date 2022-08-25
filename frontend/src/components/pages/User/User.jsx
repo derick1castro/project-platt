@@ -6,13 +6,15 @@ import Navbar from '../../layout/Navbar'
 import useFlashMessage from "../../../hooks/useFlashMessage"
 import Modal from '../../Modal/Modal'
 import Register from '../Auth/Register'
+import ModalEdit from '../../Modal/ModalEdit'
+import EditUser from '../Edit/EditUser'
 
 const User = () => {
     const [users, setUsers] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
     const {setFlashMessage} = useFlashMessage
     
-
+    // CHAMANDO A API DE LISTA DE USUÁRIOS
     useEffect(() => {
         api.get('/users/usuarios', {
             headers: {
@@ -23,14 +25,37 @@ const User = () => {
             setUsers(response.data.user)
         })
     }, [token])
+    
+    // REMOVENDO USUÁRIO
+    async function removeUser(id) {
+        let msgType = 'success'
+        
 
-  return (
+        const data = await api.delete(`/users/${id}`, {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(token)}`
+            }
+        }).then((response) => {
+            const updatedUsers = users.filter((user) => user._id !== id)
+            setUsers(updatedUsers)
+            return response.data
+        })
+        .catch((err) => {
+            msgType = 'error'
+            return err.response.data
+        })
+        
+        setFlashMessage(data.message, msgType)   
+    }
+
+return (
     <>
         <Navbar />
         <section className='h-[91vh]'>
 
             <div className="flex justify-end bg-[#001c23]">
-                <Modal><Register/></Modal>
+                <Modal btnText='Convidar usuário'><Register/></Modal>
+                
             </div>
 
             <nav className=''>
@@ -54,8 +79,12 @@ const User = () => {
                 <span> {user.email}</span>
                 <span>hora</span>
                 <div className='flex'>
-                    <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-3">Excluir</button>
-                    <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-6">Editar</button>
+                    <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-3" onClick={() => {
+                        removeUser(user._id)
+                    }}>
+                        Excluir</button>
+                    <ModalEdit btnText='Editar'><EditUser /></ModalEdit>
+                    {/* <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-6">Editar</button> */}
                 </div>    
             </div>
             ))}
