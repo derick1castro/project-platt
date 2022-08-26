@@ -1,5 +1,5 @@
 ![catalogo-platt](https://user-images.githubusercontent.com/104864411/185402388-2622daf9-3362-4ccd-8cf1-399bdbdd601f.png)
-
+<br/>
 <h1>FullStack MERN Project</h1>
 
 Run npm install to install all the necessary dependencies
