@@ -13,4 +13,4 @@ Funcionalidades do projeto:
 <br/>
 --> Filtro das soluções técnicnas;
 <br/>
---> Authenticação utilizando JWT.
+--> Autenticação utilizando JWT.
