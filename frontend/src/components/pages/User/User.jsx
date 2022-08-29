@@ -4,10 +4,11 @@ import { Link } from "react-router-dom"
 import { useState, useEffect } from "react"
 import Navbar from '../../layout/Navbar'
 import useFlashMessage from "../../../hooks/useFlashMessage"
-import Modal from '../../Modal/Modal'
+import ModalBarra from '../../layout/ModalBarra'
 import Register from '../Auth/Register'
-import ModalEdit from '../../Modal/ModalEdit'
 import EditUser from '../Edit/EditUser'
+import ModalEdit from '../../Modal/ModalEdit'
+
 
 const User = () => {
     const [users, setUsers] = useState([])
@@ -52,12 +53,7 @@ return (
     <>
         <Navbar />
         <section className='h-[91vh]'>
-
-            <div className="flex justify-end bg-[#001c23]">
-                <Modal btnText='Convidar usuário'><Register/></Modal>
-                
-            </div>
-
+            <ModalBarra text='Convidar Usuário'><Register/></ModalBarra>
             <nav className=''>
                 <ul className='flex items-center list-none m-[50px] space-x-8'>
                     <li className='cursor-pointer font-medium py-2 text-[#68787b] hover:text-[#00abd6] transition ease-in-out duration-400 hover:border-b-2 hover:border-[#00abd6]'>

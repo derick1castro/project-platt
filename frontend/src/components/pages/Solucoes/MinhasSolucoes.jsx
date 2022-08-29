@@ -6,6 +6,8 @@ import { useState, useEffect } from "react"
 import Navbar from "../../layout/Navbar"
 
 import useFlashMessage from "../../../hooks/useFlashMessage"
+import ModalBarra from "../../layout/ModalBarra"
+import AddSolucao from './AddSolucao'
 
 const MinhasSolucoes = () => {
     const [solucoes, setSolucoes] = useState([])
@@ -50,20 +52,16 @@ const MinhasSolucoes = () => {
         <section>
             {solucoes.length > 0 ? 
             <>
-            <div className="flex justify-end bg-[#001c23]">
-                <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[20px] px-8 rounded-md text-md">
-                    <Link to="/solucoes/add">Nova solução</Link>
-                </button>
-            </div>
-            
-            <div className="flex m-[50px] items-center justify-between mt-[70px]">
-                <div className="space-x-[150px] text-[#009cc2] text-2xl font-medium">
-                    <span>Título</span>
-                    <span>Indtech</span>  
+                <ModalBarra text='Nova solução'><AddSolucao/> </ModalBarra>            
+                <div className="flex m-[50px] items-center justify-between mt-[70px]">
+                    <div className="space-x-[150px] text-[#009cc2] text-2xl font-medium">
+                        <span>Título</span>
+                        <span>Indtech</span>  
+                    </div>
+                    <span></span>
                 </div>
-                <span></span>
-            </div>
-            </> : null}
+            </> :
+                 null}
              
             {solucoes.length > 0 ? solucoes.map((solucao) => (
                 <div className='flex items-center justify-between mx-[50px] mt-[20px] border-b-2 border-[#737272] pb-3 text-md' key={solucao._id}>
