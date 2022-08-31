@@ -5,9 +5,12 @@
 Run npm install to install all the necessary dependencies
 
 <h2>Projeto desenvolvido com a stack Mongo, Express, React.JS, Node.JS - (MERN) e estilizado com o framework tailwind.CSS</h2>
-<br>
 Funcionalidades do projeto:
+<br/>
 --> CRUD de um cadastro de clientes enviando seu acesso da plataforma por email, edição, exclusão e envio de email de convites via email;
+<br/>
 --> CRUD de um cadastro de soluções técnicas, edição, exclusão e edição;
+<br/>
 --> Filtro das soluções técnicnas;
---> Authenticação utilizando JWT.
+<br/>
+--> Autenticação utilizando JWT.
