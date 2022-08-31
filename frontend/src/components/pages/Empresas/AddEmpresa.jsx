@@ -1,21 +1,15 @@
 import React from 'react'
-import Input from '../../form/Input'
+import api from '../../../utils/api'
+import { useState } from 'react'
+import { usenavigate } from 'react-router-dom'
+import useFlashMessage from '../../../hooks/useFlashMessage'
+import EmpreasForm from '../../form/EmpreasForm'
 
 function AddEmpresa() {
     
   return (
     <>
-        <div className='space-y-9 mt-[50px]'>
-            <h1 className='text-3xl text-[#009cc2] font-bold'>Nova Empresa</h1>
-            <h2 className='text-[#009cc2] font-bold'>Dados da empresa</h2> 
-        </div>
-        <Input 
-            text='Identificação'
-            type='text'
-            name='empresa'
-            placeholder='Adicionar Empresa'
-            // handleOnChange={handleChange}
-        />
+      <EmpreasForm btnText='Cadastrar Nova Empresa'/>
     </>
      
   )
