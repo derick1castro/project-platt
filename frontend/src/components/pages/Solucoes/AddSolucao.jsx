@@ -9,7 +9,7 @@ import api from '../../../utils/api'
 
 // hooks
 import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import {useNavigate } from 'react-router-dom'
 import useFlashMessage from '../../../hooks/useFlashMessage'
 
 // componets
@@ -17,9 +17,9 @@ import SolucoesForm from '../../form/SolucoesForm'
 import Message from '../../layout/Message'
 
 const AddSolucao = () => {
-const [token] = useState(localStorage.getItem('token') || '')
-const {setFlashMessage} = useFlashMessage()
-const navigate = useNavigate()
+    const [token] = useState(localStorage.getItem('token') || '')
+    const {setFlashMessage} = useFlashMessage()
+    const navigate = useNavigate()
 
     async function registerSolucoes(solucoes) {
         let msgType = 'success'

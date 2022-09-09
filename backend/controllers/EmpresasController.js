@@ -12,7 +12,7 @@ module.exports = class EmpresasController {
 
         // validations
         if(!empresa) {
-            res.status(422).json({ message: "A empresa é obrigatória!" })
+            res.status(400).json({ message: "A empresa é obrigatória!" })
             return
         }
 

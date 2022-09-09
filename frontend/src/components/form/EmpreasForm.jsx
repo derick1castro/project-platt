@@ -5,27 +5,30 @@ function EmpreasForm({ handleSubmit, companyData, btnText}) {
     const [company, setCompany] = useState(companyData || {})
 
     function handleChange(e) {
-
+      setCompany({...company, [e.target.name]: e.target.value})
     }
+
+    function submit(e) {
+      e.preventDefault()
+      console.log(company)
+      handleSubmit(company)
+    }
+    console.log(company)
 
   return (
     <section>
-        <div className='space-y-9 mt-[50px]'>
-          <h1 className='text-3xl text-[#009cc2] font-bold'>Nova Empresa</h1>
-          <h2 className='text-[#009cc2] font-bold'>Dados da empresa</h2> 
-        </div>
-        <form >
+        <form onSubmit={submit}>
             <Input 
             text='Identificação'
             type='text'
             name='empresa'
             placeholder='Adicionar Empresa'
             handleOnChange={handleChange}
-            value={company.name | ''}
+            value={company.empresa || ''}
             />
+            <input type="submit" value={btnText} className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md"/>
         </form>
-        <input type="submit" value={btnText} className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-3 m-[30px] px-8 rounded-md text-md"/>
-       
+        
     </section>
   )
 }

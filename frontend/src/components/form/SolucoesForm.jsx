@@ -1,5 +1,4 @@
 import {useState} from 'react'
-
 import Input from './Input'
 
 const SolucoesForm = ({handleSubmit, solucoesData, btnText}) => {
