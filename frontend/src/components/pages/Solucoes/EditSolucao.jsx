@@ -15,11 +15,11 @@ const EditSolucao = () => {
   const { setFlashMessage } = useFlashMessage()
 
   useEffect(() => {
-     api.get(`/solucoes/${id}`, {
-     Authorization: `Bearer ${JSON.parse(token)}`
-     }).then((response) => {
-       setSolucoes(response.data.solucoes)
-     })
+    api.get(`/solucoes/${id}`, {
+    Authorization: `Bearer ${JSON.parse(token)}`
+    }).then((response) => {
+      setSolucoes(response.data.solucoes)
+    })
   }, [token, id])
 
   async function updateSolucoes(solucoes) {

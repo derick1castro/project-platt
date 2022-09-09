@@ -46,7 +46,7 @@ const MinhasSolucoes = () => {
         setFlashMessage(data.message, msgType)
     }
 
-  return (
+return (
     <>
         <Navbar />
         <section>
@@ -61,8 +61,8 @@ const MinhasSolucoes = () => {
                     <span></span>
                 </div>
             </> :
-                 null}
-             
+                null}
+            
             {solucoes.length > 0 ? solucoes.map((solucao) => (
                 <div className='flex items-center justify-between mx-[50px] mt-[20px] border-b-2 border-[#737272] pb-3 text-md' key={solucao._id}>
                     <div className="space-x-[125px]">
@@ -91,7 +91,7 @@ const MinhasSolucoes = () => {
             }
         </section>
     </>
-  )
+)
 }
 
 export default MinhasSolucoes

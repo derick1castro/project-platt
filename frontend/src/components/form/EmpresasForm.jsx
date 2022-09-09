@@ -1,7 +1,7 @@
 import React, { useState }  from 'react'
 import Input from './Input'
 
-function EmpreasForm({ handleSubmit, companyData, btnText}) {
+function EmpresasForm({ handleSubmit, companyData, btnText}) {
     const [company, setCompany] = useState(companyData || {})
 
     function handleChange(e) {
@@ -33,4 +33,4 @@ function EmpreasForm({ handleSubmit, companyData, btnText}) {
   )
 }
 
-export default EmpreasForm
+export default EmpresasForm

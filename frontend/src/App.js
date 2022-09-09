@@ -15,6 +15,7 @@ import AddSolucao from './components/pages/Solucoes/AddSolucao';
 import User from './components/pages/User/User';
 import EditSolucao from './components/pages/Solucoes/EditSolucao';
 import Empresas from './components/pages/Empresas/Empresas';
+import EditEmpresa from './components/pages/Empresas/EditEmpresa';
 
 
 function App() {
@@ -28,8 +29,9 @@ function App() {
             <Route path='/register' element={<Register />} />
             <Route path='/solucoes/minhassolucoes' element={<MinhasSolucoes />} />
             <Route path='/solucoes/add' element={<AddSolucao />} />
-            <Route path='/empresas' element={<Empresas />} />
             <Route path='/solucoes/edit/:id' element={<EditSolucao />} />
+            <Route path='/empresas' element={<Empresas />} />
+            <Route path='/empresas/edit/:id' element={<EditEmpresa />} />
             <Route path='/usuarios' element={<User />} />
           </Routes>
         </UserProvider>  

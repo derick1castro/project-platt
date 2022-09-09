@@ -1,7 +1,7 @@
 const Company = require('../models/Empresas')
 
-// const getUserByToken = require('../helpers/get-user-by-token')
-// const getToken = require('../helpers/get-token')
+const getUserByToken = require('../helpers/get-user-by-token')
+const getToken = require('../helpers/get-token')
 const ObjectId = require('mongoose').Types.ObjectId
 
 module.exports = class EmpresasController {
@@ -20,6 +20,8 @@ module.exports = class EmpresasController {
         const company = new Company({
             empresa,
         })
+
+        const token = getToken(req)
 
         try {
             const newCompany = await company.save()

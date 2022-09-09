@@ -3,7 +3,7 @@ import api from '../../../utils/api'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import useFlashMessage from '../../../hooks/useFlashMessage'
-import EmpreasForm from '../../form/EmpreasForm'
+import EmpresasForm from '../../form/EmpresasForm'
 
 function AddEmpresa() {
   const [token] =useState(localStorage.getItem('token') || '')
@@ -50,7 +50,7 @@ function AddEmpresa() {
         <h1 className='text-3xl text-[#009cc2] font-bold'>Nova Empresa</h1>
         <h2 className='text-[#009cc2] font-bold'>Dados da empresa</h2> 
       </div>
-      <EmpreasForm handleSubmit={registerCompany} btnText='Cadastrar Nova Empresa'/>
+      {/* <EmpresasForm handleSubmit={registerCompany} btnText='Cadastrar Nova Empresa'/> */}
     </section>
   )
 }

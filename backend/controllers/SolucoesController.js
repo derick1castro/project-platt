@@ -119,7 +119,7 @@ module.exports = class SolucoesController {
             solucoes,
         })
     }
- 
+
     static async getSoulucoesById(req, res) {
 
         const id = req.params.id
