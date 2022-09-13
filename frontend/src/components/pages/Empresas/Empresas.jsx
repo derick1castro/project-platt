@@ -50,11 +50,16 @@ function Empresas() {
             <>
                 <div className="bg-[#001c23]">
                     <ModalBarra text='Cadastrar Empresa'><AddEmpresa /></ModalBarra>  
-                </div>   
+                </div>
+                
                 <div className="flex m-[50px] items-center justify-between mt-[70px]">
-                    <div className="space-x-[150px] text-[#009cc2] text-2xl font-medium">
-                        <span>Empresas</span>  
-                        <span>Usuários</span>  
+                    <div className="text-[#009cc2] text-2xl font-medium flex items-center">
+                        <div className="w-[15rem]">
+                            <span>Empresas</span>
+                        </div>
+                        <div>
+                            <span>Usuários</span>
+                        </div>
                     </div>
                     <span></span>
                 </div>
@@ -63,9 +68,11 @@ function Empresas() {
             
             {company.length > 0 ? company.map((company) => (
                 <div className='flex items-center justify-between mx-[50px] mt-[20px] border-b-2 border-[#737272] pb-3 text-md' key={company._id}>
-                    <div className="space-x-[125px]">
-                        <span className='font-medium text-xl'> {company.empresa}</span>
-                        {/* <span className=""> {company.indtech}</span> */}
+                    <div>
+                        <div className="w-[15rem]">
+                            <span className='font-medium text-xl'> {company.empresa}</span>
+                            {/* <span className=""> {company.indtech}</span> */}
+                        </div>
                     </div>
                     <div>
                         <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-3" onClick={() => {

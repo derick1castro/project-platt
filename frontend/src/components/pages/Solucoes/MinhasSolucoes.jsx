@@ -52,11 +52,17 @@ return (
         <section>
             {solucoes.length > 0 ? 
             <>
-                <ModalBarra text='Nova solução'><AddSolucao/> </ModalBarra>            
+                <div className="bg-[#001c23]">
+                    <ModalBarra text='Nova solução'><AddSolucao/> </ModalBarra>            
+                </div>
                 <div className="flex m-[50px] items-center justify-between mt-[70px]">
-                    <div className="space-x-[150px] text-[#009cc2] text-2xl font-medium">
-                        <span>Título</span>
-                        <span>Indtech</span>  
+                    <div className="text-[#009cc2] text-2xl font-medium flex items-center">
+                        <div className="w-[15rem]">
+                            <span>Título</span>
+                        </div>
+                        <div>
+                            <span>Indtech</span>  
+                        </div>
                     </div>
                     <span></span>
                 </div>
@@ -65,9 +71,13 @@ return (
             
             {solucoes.length > 0 ? solucoes.map((solucao) => (
                 <div className='flex items-center justify-between mx-[50px] mt-[20px] border-b-2 border-[#737272] pb-3 text-md' key={solucao._id}>
-                    <div className="space-x-[125px]">
-                        <span className='font-medium text-xl'> {solucao.titulo}</span>
-                        <span className=""> {solucao.indtech}</span>
+                    <div className="flex items-center">
+                        <div className="w-[15rem]">
+                            <span className='font-medium text-xl'> {solucao.titulo}</span>
+                        </div>
+                        <div>
+                            <span className='font-medium text-xl'> {solucao.indtech}</span>
+                        </div>
                     </div>
                     <div>
                         <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-3" onClick={() => {

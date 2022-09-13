@@ -13,7 +13,7 @@ module. exports = class UserController {
 
     static async register(req, res) {
 
-        const { name, email, phone, password, confirmpassword } = req.body
+        const { name, email, empresa, password, cargo} = req.body
 
         // validations
         if(!name) {
@@ -25,21 +25,16 @@ module. exports = class UserController {
             res.status(422).json({ message: 'O email é obrigatório' })
             return
         }
-        if(!phone) {
-            res.status(422).json({ message: 'O telefone é obrigatório' })
+        if(!empresa) {
+            res.status(422).json({ message: 'A empresa é obrigatória' })
+            return
+        }
+        if(!cargo) {
+            res.status(422).json({ message: 'O cargo é obrigatório' })
             return
         }
         if(!password) {
             res.status(422).json({ message: 'A senha é obrigatória' })
-            return
-        }
-        if(!confirmpassword) {
-            res.status(422).json({ message: 'A confirmação de senha é obrigatória' })
-            return
-        }
-
-        if(password !== confirmpassword) {
-            res.status(422).json({ message: 'A senha e a confirmaão de senha precisam ser iguais!' })
             return
         }
 
@@ -59,7 +54,8 @@ module. exports = class UserController {
         const user = new User({
             name,
             email,
-            phone,
+            empresa,
+            cargo,
             password: passwordHash,
         })
 
@@ -182,7 +178,7 @@ module. exports = class UserController {
         const token = getToken(req)
         const user = await getUserbyToken(token)
 
-        const {name, email, phone, password, confirmpassword} = req.body
+        const {name, email, empresa, password, cargo} = req.body
 
         if(req.file) {
             user.image = req.file.filename
@@ -212,17 +208,24 @@ module. exports = class UserController {
 
         user.email = email
 
-        if(!phone) {
-            res.status(422).json({ message: 'O telefone é obrigatório' })
+        if(!empresa) {
+            res.status(422).json({ message: 'A empresa é obrigatória' })
             return
         }
 
-        user.phone = phone
+        user.empresa = empresa
 
-        if (password != confirmpassword) {
-            res.status(422).json({ message: 'As senhas não conferem! '})
+        if(!cargo) {
+            res.status(422).json({ message: 'O cargo é obrigatório' })
             return
-        } else if (password === confirmpassword && password != null) {
+        }
+
+        user.cargo = cargo
+
+        if (!password) {
+            res.status(422).json({ message: 'A senha é obrigatória '})
+            return
+        } else if (password != null) {
 
             // creating password
             const salt = await bcrypt.genSalt(12)

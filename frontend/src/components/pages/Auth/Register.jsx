@@ -1,4 +1,5 @@
 import Input from '../../form/Input'
+import Select from '../../form/Select'
 import React from 'react'
 import Container from '../../../components/layout/Container'
 import Message from '../../layout/Message'
@@ -21,7 +22,7 @@ const Register = () => {
         register(user) 
     }
 
-  return (
+return (
     <>
         <Container>
         <Message />
@@ -43,10 +44,10 @@ const Register = () => {
                     handleOnChange={handleChange}
                     />
                     <Input
-                    text="Digite o telefone"
+                    text="Cargo"
                     type="text"
-                    name="phone"
-                    placeholder="Ex: 3333-3333"
+                    name="cargo"
+                    placeholder="Desenvolvedor"
                     handleOnChange={handleChange}
                     />
                     <Input
@@ -56,19 +57,18 @@ const Register = () => {
                     placeholder="Digite a senha"
                     handleOnChange={handleChange}
                     />
-                    <Input
-                    text="Confirmação da senha"
-                    type="password"
-                    name="confirmpassword"
-                    placeholder="Confirme a senha"
+                    <Select
+                    text="Empresa"
+                    name="empresa"
                     handleOnChange={handleChange}
+                    
                     />
                     <button className='bg-[#009CC2] p-3 text-white px-5 rounded mt-4' type='submit'>Cadastrar usuário</button>
                 </form>
             </section>
         </Container>
     </>
-  )
+)
 }
 
 export default Register

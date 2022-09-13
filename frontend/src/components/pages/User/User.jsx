@@ -10,8 +10,10 @@ import EditUser from '../Edit/EditUser'
 import ModalEdit from '../../Modal/ModalEdit'
 
 
+
 const User = () => {
     const [users, setUsers] = useState([])
+    const [company, setCompany] = useState([])
     const [token] = useState(localStorage.getItem('token') || '')
     const {setFlashMessage} = useFlashMessage
     
@@ -26,6 +28,19 @@ const User = () => {
             setUsers(response.data.user)
         })
     }, [token])
+
+    useEffect(() => {
+        api.get('/empresas/allcompanies', {
+            headers: {
+                Authorization: `Bearer ${JSON.parse(token)}`
+            }
+        })
+        .then((response) => {
+            setCompany(response.data.company)
+        })
+    }, [token])
+
+    
     
     // REMOVENDO USUÁRIO
     async function removeUser(id) {
@@ -53,8 +68,10 @@ return (
     <>
         <Navbar />
         <section className='h-[91vh]'>
-            <ModalBarra text='Convidar Usuário'><Register/></ModalBarra>
-            <nav className=''>
+            <div className="bg-[#001c23]">
+                <ModalBarra text='Convidar Usuário'><Register/></ModalBarra>
+            </div>
+            <nav className='h-[5rem]'>
                 <ul className='flex items-center list-none m-[50px] space-x-8'>
                     <li className='cursor-pointer font-medium py-2 text-[#68787b] hover:text-[#00abd6] transition ease-in-out duration-400 hover:border-b-2 hover:border-[#00abd6]'>
                         <Link className='max-w-[62px]' to="/register">Usuários</Link>
@@ -65,25 +82,50 @@ return (
                 </ul>
             </nav>
 
-            <div>
-                <span className='text-2xl font-bold text-[#00abd6] ml-[50px]'>Braskem</span>
-            </div>
+            
 
-            {users.length > 0 && users.map((user) => (
-            <div className='flex items-center justify-between mx-[50px] mt-[20px] border-b-2 border-[#737272] pb-3 text-md' key={user._id}>                            
-                <span className='font-medium text-xl'> {user.name}</span>
-                <span> {user.email}</span>
-                <span>hora</span>
-                <div className='flex'>
-                    <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-3" onClick={() => {
-                        removeUser(user._id)
-                    }}>
-                        Excluir</button>
-                    <ModalEdit btnText='Editar'><EditUser /></ModalEdit>
-                    {/* <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-6">Editar</button> */}
-                </div>    
+            {company.map((company) => {
+                if(users.findIndex(user=>user.empresa === company.empresa) > -1) {
+                    return (
+                        <div className=' mx-[50px] mb-[70px]' key={company._id}>
+                <div className='mb-[20px]'>
+                    <span className='text-2xl font-bold text-[#00abd6]'>{company.empresa}</span>
+                </div>                            
+                
+                {users.map((user) => {
+                    if(company.empresa == user.empresa) {
+                        return (
+                            <div className='mb-[15px] flex items-center justify-between border-b-2 border-[#737272] pb-2 text-md' key={user._id}>
+                                <div className='flex justify-between w-[200rem] items-center'>
+                                    <div className='w-[25rem]'>
+                                        <span className='font-medium text-xl'>{user.name}</span>
+                                    </div>
+                                    <div className='w-[25rem]'>
+                                        <span>{user.cargo}</span>
+                                    </div>
+                                    <div className='w-[25rem]'>
+                                        <span>hora</span>
+                                    </div>
+                                    <div className='flex'>
+                                        <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-3" onClick={() => {
+                                            removeUser(user._id)
+                                        }}>
+                                            Excluir
+                                        </button>
+                                        <ModalEdit btnText='Editar'><EditUser /></ModalEdit>
+                                    </div>
+                                </div>
+                                
+                                
+                            </div>
+                            )
+                    }
+                })}
             </div>
-            ))}
+                    )
+                }
+            
+        })}
             {users.length === 0 &&
             <div className='flex flex-col items-center justify-center h-full space-y-2'>
                 <p>Ainda não há usuários cadastrados no sistema.</p>
@@ -94,11 +136,10 @@ return (
                     </button>
                 </div>
             </div>
-            } 
-
+            }
         </section>    
     </>
-  )
+)
 }
 
 export default User

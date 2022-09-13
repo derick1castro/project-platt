@@ -19,7 +19,11 @@ const User = mongoose.model(
         image: {
             type: String
         },
-        phone: {
+        empresa: {
+            type: String,
+            required: true
+        },
+        cargo: {
             type: String,
             required: true
         }

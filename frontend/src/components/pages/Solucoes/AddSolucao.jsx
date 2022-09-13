@@ -56,7 +56,7 @@ const AddSolucao = () => {
         
     }
 
-  return (
+return (
     <>
         <Navbar />
         <Message />
@@ -65,7 +65,7 @@ const AddSolucao = () => {
         </section>
     </>
 
-  )
+)
 }
 
 export default AddSolucao
