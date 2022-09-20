@@ -1,45 +1,47 @@
-const mongoose = require('../db/conn')
-const { Schema } = mongoose
+const mongoose = require("../db/conn");
+const { Schema } = mongoose;
 
 const Solucoes = mongoose.model(
-    'Solucoes',
-    new Schema(
+  "Solucoes",
+  new Schema(
     {
-       titulo: {
+      titulo: {
         type: String,
-        required: true
-       },
-       descricao: {
+        required: true,
+      },
+      descricao: {
         type: String,
-        required: true 
-       },
-       indtech: {
+        required: true,
+      },
+      indtech: {
         type: String,
-        required: true
-       }, 
-       caracteristicas: {
+        required: true,
+      },
+      caracteristicas: {
         type: String,
-        required: true
-       },
-       dores: {
+        required: true,
+      },
+      dores: {
         type: String,
-        required: true
-       },
-       depoimentos: {
+        required: true,
+      },
+      depoimentos: {
         type: String,
-        required: true
-       },
-       autorDepoimento: {
+        required: true,
+      },
+      autorDepoimento: {
         type: String,
-        required: true
-       },
-       linkCase: {
-        type: String
-       },
-       images :{
-        type: Array
-       },
-    }, { timestamps: true})
-)
+        required: true,
+      },
+      linkCase: {
+        type: String,
+      },
+      images: {
+        type: Array,
+      },
+    },
+    { timestamps: true }
+  )
+);
 
-module.exports = Solucoes
+module.exports = Solucoes;

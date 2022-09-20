@@ -1,17 +1,17 @@
-import React from 'react'
-import api from '../../../utils/api'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
-import useFlashMessage from '../../../hooks/useFlashMessage'
-import EmpresasForm from '../../form/EmpresasForm'
+import React from "react";
+import api from "../../../utils/api";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import useFlashMessage from "../../../hooks/useFlashMessage";
+import EmpresasForm from "../../form/EmpresasForm";
 
 function AddEmpresa() {
-  const [token] =useState(localStorage.getItem('token') || '')
-  const { setFlashMessage } = useFlashMessage()
-  const navigate = useNavigate()
+  const [token] = useState(localStorage.getItem("token") || "");
+  const { setFlashMessage } = useFlashMessage();
+  const navigate = useNavigate();
 
   async function registerCompany(company) {
-    let msgType = 'success'
+    let msgType = "success";
 
     // const formData = new FormData()
 
@@ -25,34 +25,42 @@ function AddEmpresa() {
     //   }
     // })
 
-    const data = await api.post('empresas/create', {empresa: company.empresa}, {
-      Authorization: `Bearer ${JSON.parse(token)}`,
-      // 'Content-Type': 'multipart/form-data'
-    })
-    .then((response) => {
-      return response.data
-    })
-    .catch((err) => {
-      msgType = 'error'
-      return err.response.data
-    })
+    const data = await api
+      .post(
+        "empresas/create",
+        { empresa: company.empresa },
+        {
+          Authorization: `Bearer ${JSON.parse(token)}`,
+          // 'Content-Type': 'multipart/form-data'
+        }
+      )
+      .then((response) => {
+        return response.data;
+      })
+      .catch((err) => {
+        msgType = "error";
+        return err.response.data;
+      });
 
-    setFlashMessage(data.message, msgType)
+    setFlashMessage(data.message, msgType);
 
-    if(msgType !== 'error') {
-      navigate('/empresas')
+    if (msgType !== "error") {
+      navigate("/empresas");
     }
   }
 
   return (
     <section>
-      <div className='space-y-9 mt-[50px]'>
-        <h1 className='text-3xl text-[#009cc2] font-bold'>Nova Empresa</h1>
-        <h2 className='text-[#009cc2] font-bold'>Dados da empresa</h2> 
+      <div className="space-y-9 mt-[50px]">
+        <h1 className="text-3xl text-[#009cc2] font-bold">Nova Empresa</h1>
+        <h2 className="text-[#009cc2] font-bold">Dados da empresa</h2>
       </div>
-      <EmpresasForm handleSubmit={registerCompany} btnText='Cadastrar Nova Empresa'/>
+      <EmpresasForm
+        handleSubmit={registerCompany}
+        btnText="Cadastrar Nova Empresa"
+      />
     </section>
-  )
+  );
 }
 
-export default AddEmpresa
+export default AddEmpresa;
