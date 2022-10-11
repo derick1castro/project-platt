@@ -60,7 +60,7 @@ export default function useAuth() {
 
     localStorage.setItem("token", JSON.stringify(data.token));
 
-    navigate("/usuarios");
+    navigate("/");
   }
 
   function logout() {

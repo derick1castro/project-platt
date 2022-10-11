@@ -1,9 +1,10 @@
-function Input({ type, text, name, placeholder, handleOnChange, value }) {
+function InputSimples({ type, text, name, placeholder, handleOnChange, value }) {
   return (
     <div className="flex flex-col">
-      <label className="mb-2 font-bold text-sm text-[#68787b]" htmlFor={name}>
-        {text}:
-      </label>
+      <label
+        className="mb-2 font-bold text-sm text-[#68787b]"
+        htmlFor={name}
+      ></label>
       <input
         className="py-1 px-2 border rounded"
         type={type}
@@ -18,4 +19,4 @@ function Input({ type, text, name, placeholder, handleOnChange, value }) {
   );
 }
 
-export default Input;
+export default InputSimples;

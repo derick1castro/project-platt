@@ -62,6 +62,7 @@ module.exports = class EmpresasController {
     res.status(200).json({
       company: company,
     });
+    return;
   }
 
   //remoção das empresas

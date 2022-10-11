@@ -16,6 +16,8 @@ import User from "./components/pages/User/User";
 import EditSolucao from "./components/pages/Solucoes/EditSolucao";
 import Empresas from "./components/pages/Empresas/Empresas";
 import EditEmpresa from "./components/pages/Empresas/EditEmpresa";
+import Solution from "./components/pages/Auth/Solution";
+import SolutionDetails from "./components/pages/User/SolutionDetails";
 
 function App() {
   return (
@@ -24,6 +26,7 @@ function App() {
         <UserProvider>
           <Routes>
             <Route path="/" element={<Home />} />
+            <Route path="/solution" element={<Solution />} />
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route
@@ -31,10 +34,12 @@ function App() {
               element={<MinhasSolucoes />}
             />
             <Route path="/solucoes/add" element={<AddSolucao />} />
-            <Route path="/solucoes/edit/:id" element={<EditSolucao />} />
             <Route path="/empresas" element={<Empresas />} />
-            <Route path="/empresas/edit/:id" element={<EditEmpresa />} />
             <Route path="/usuarios" element={<User />} />
+            <Route path="/empresas/edit/:id" element={<EditEmpresa />} />
+            <Route path="/solucoes/edit/:id" element={<EditSolucao />} />
+            <Route path="/solucoes/:id" element={<SolutionDetails />} />
+            
           </Routes>
         </UserProvider>
       </Router>

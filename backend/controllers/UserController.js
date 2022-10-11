@@ -85,6 +85,7 @@ module.exports = class UserController {
       res.status(422).json({
         message: "Não há usuário cadastrado com este e-mail",
       });
+      return;
     }
 
     // check if password match with db password
@@ -94,6 +95,7 @@ module.exports = class UserController {
       res.status(422).json({
         message: "Senha inválida!",
       });
+      return;
     }
 
     await createUserToken(user, req, res);

@@ -12,18 +12,18 @@ import { Context } from "../../context/UserContext";
 function NavbarUsuario() {
   const [users, setUsers] = useState([]);
   const [token] = useState(localStorage.getItem("token") || "");
-  const { authenticated, logout } = useContext(Context);
+  const { logout } = useContext(Context);
 
   useEffect(() => {
-    api
-      .get("/users/usuarios", {
-        headers: {
-          Authorization: `Bearer ${JSON.parse(token)}`,
-        },
-      })
-      .then((response) => {
-        setUsers(response.data.user);
-      });
+    // api
+    //   .get("/users/usuarios", {
+    //     headers: {
+    //       Authorization: `Bearer ${JSON.parse(token)}`,
+    //     },
+    //   })
+    //   .then((response) => {
+    //     setUsers(response.data.user);
+    //   });
   }, [token]);
 
   return (

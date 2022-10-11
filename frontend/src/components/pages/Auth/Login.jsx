@@ -24,7 +24,7 @@ function Login() {
   }
 
   return (
-    <main className="">
+    <main>
       <section className="w-screen h-screen flex justify-center items-center">
         <div className="border rounded-l-lg w-[550px] h-[700px] items-center flex flex-col">
           <div className="py-[50px]">

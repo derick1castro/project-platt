@@ -57,9 +57,12 @@ const MinhasSolucoes = () => {
         {solucoes.length > 0 ? (
           <>
             <div className="bg-[#001c23]">
-              <ModalBarra text="Nova solução">
+              <button className="text-white bg-[#009cc2] hover:bg-[#005469] duration-400 transition ease-in-out py-2 px-4 rounded mr-3">
+                <Link to="/solucoes/add">Adicionar Solução</Link>
+              </button>
+              {/* <ModalBarra text="Nova solução">
                 <AddSolucao />{" "}
-              </ModalBarra>
+              </ModalBarra> */}
             </div>
             <div className="flex m-[50px] items-center justify-between mt-[70px]">
               <div className="text-[#009cc2] text-2xl font-medium flex items-center">
